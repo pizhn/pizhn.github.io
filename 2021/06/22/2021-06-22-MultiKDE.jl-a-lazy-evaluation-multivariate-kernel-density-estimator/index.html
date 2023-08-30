@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="MultiKDE.jlI am excited to announce the release of MultiKDE.jl, a Julia library for lazy-evaluated multivariate kernel density estimation.  Kernel Density EstimationKernel density estimation (KDE) is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator">
+<meta property="og:url" content="https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/index.html">
+<meta property="og:site_name" content="EvqIKyhp72">
+<meta property="og:description" content="MultiKDE.jlI am excited to announce the release of MultiKDE.jl, a Julia library for lazy-evaluated multivariate kernel density estimation.  Kernel Density EstimationKernel density estimation (KDE) is">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim1.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim2.svg">
+<meta property="article:published_time" content="2021-06-22T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-29T20:40:21.124Z">
+<meta property="article:author" content="Ping">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim1.svg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Posts</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&text=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&is_video=false&description=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator&body=Check out this article: https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&name=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&t=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MultiKDE-jl"><span class="toc-number">1.</span> <span class="toc-text">MultiKDE.jl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernel-Density-Estimation"><span class="toc-number">2.</span> <span class="toc-text">Kernel Density Estimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementation"><span class="toc-number">3.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DEMOs-Code"><span class="toc-number">4.</span> <span class="toc-text">DEMOs [Code]</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Ping</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-06-22T04:00:00.000Z" class="dt-published" itemprop="datePublished">2021-06-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <hr>
+<h2 id="MultiKDE-jl"><a href="#MultiKDE-jl" class="headerlink" title="MultiKDE.jl"></a>MultiKDE.jl</h2><p>I am excited to announce the release of <a target="_blank" rel="noopener" href="https://github.com/noilreed/MultiKDE.jl">MultiKDE.jl</a>, a Julia library for lazy-evaluated multivariate kernel density estimation.</p>
+<hr>
+<h2 id="Kernel-Density-Estimation"><a href="#Kernel-Density-Estimation" class="headerlink" title="Kernel Density Estimation"></a>Kernel Density Estimation</h2><p>Kernel density estimation (KDE) is a classic technique in the field of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Nonparametric_statistics">nonparametric statistics</a>. The objective of KDE is to estimate a distribution given some observations without a closed-form assumption. <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kernel_(statistics)">Kernel function</a> is required for KDE, a kernel function is essentially a probabilistic mass function, but in this scenario used for estimating an unknown distribution. In most cases, it is desirable for the kernel function to have two properties:</p>
+<ol>
+<li><strong>Normalization</strong>: $\int_{-\infty}^{\infty} K(u) du &#x3D; 1$, whose integration sums to one (as we will discuss later).</li>
+<li><strong>Symmetry</strong>: $K(u) &#x3D; -K(u)$, which means that the influence of one point should be symmetric with respect to surrounding points.<br>Imagine we have $D&#x3D;\{x_{1}, x_{2}, … ,x_{n}\}$, a set of observations of random variable $X$. We want to guess probability distribution of $X$ over kernel function $K$, then using KDE, probability mass at point $x$ is estimated as $\widehat{P}(X&#x3D;x)&#x3D;\frac{1}{nh}\Sigma_{i}^{n} K(\frac{x-x_{i}}{h})$, there $h$ is a hyperparameter named <em>bandwidth</em> that controls how $D$ influences $\widehat{P}$, $\frac{1}{nh}$ is a normalization term to make sure $\int_{-\infty}^{\infty} \widehat{P}(X&#x3D;u)du &#x3D; \int_{-\infty}^{\infty} K(u)du$. Easy to verify the fact that when $K$ is normalized, $\widehat{P}$ is also normalized.</li>
+</ol>
+<hr>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>Although there are several nice KDE implementations in Julia, like <a target="_blank" rel="noopener" href="https://github.com/JuliaStats/KernelDensity.jl.git">KernelDensity.jl</a> and <a target="_blank" rel="noopener" href="https://github.com/JuliaRobotics/KernelDensityEstimate.jl">KernelDensityEstimate.jl</a>. I felt it was necessary to develop another implementation while I was trying to implement <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1807.01774">BOHB</a>. Because although very remarkable, they don’t support several needed features very well:</p>
+<ol>
+<li><strong>Lazy Evaluation</strong>: We don’t want to evaluate the whole density when initialize it. Instead, when initialize, we want to just keep the data on file without any calculation, then evaluate $\widehat{P}(X&#x3D;\hat{x})$ on a specific $\hat{x}$ only when we need it. This is because in BOHB, the observations can change frequently as the algorithm evolves. Performing a complete evaluation would be unnecessary and time-consuming.</li>
+<li><strong>Multidimension</strong>: BOHB is a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hyperparameter_optimization">hyperparameter optimization</a> algorithm that using <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf">Tree Parzen Estimator</a>. When sampling hyperparameters, it splits the already evaluated hyperparameters half-and-half with respect to their performance. Then we fit two KDEs over them: KDE-good, which uses the better-performing half, and KDE-bad, which uses the worse-performing half. Note that all the observations are combination of hyperparameters so we need to treat the KDE as a multi-dimensional function. Here we use <a target="_blank" rel="noopener" href="http://csyue.nccu.edu.tw/ch/Kernel%20Estimation(Ref).pdf">product kernel</a> refers to the implementation of <a target="_blank" rel="noopener" href="https://github.com/statsmodels/statsmodels">statsmodels</a>. The original paper of BOHB mentioned they used this library.</li>
+<li><strong>Ordered and Unordered Categorical Random Variable</strong>: For hyperparameter optimization, sometimes the input space can be categorical (like number of threads to use, number of layers in model) or unordered categorical (like choose which optimization method). We need to support KDE of this kind of variables. Specifically, statsmodels uses two kernel functions that specialized for them, names them using last name of authors as <a target="_blank" rel="noopener" href="https://academic.oup.com/biomet/article-abstract/68/1/301/237752?redirectedFrom=fulltext">Wang-Ryzin</a> and <a target="_blank" rel="noopener" href="https://academic.oup.com/biomet/article-abstract/63/3/413/270829?redirectedFrom=fulltext">Aitchson-Aitken</a>.</li>
+</ol>
+<hr>
+<h2 id="DEMOs-Code"><a href="#DEMOs-Code" class="headerlink" title="DEMOs [Code]"></a>DEMOs <a target="_blank" rel="noopener" href="https://github.com/noilreed/notebook/blob/main/MultiKDE_demo/demo.ipynb">[Code]</a></h2><p align="center">
+  <img src="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim1.svg">
+  <br/>
+  Demo 1: KDE visualization of 50 random observations from a standard normal distribution $\mathcal{N}(0, 1)$
+N(0,1)) using a <a target="_blank" rel="noopener" href="http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/diffusion.gaussian.kernel.pdf.pdf">Gaussian kernel</a>, with different bandwidths. A smaller $h$ makes the curve fluctuated and more sensitive to observations, and vice versa.
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim2.svg">
+  <br/>
+  Demo 2: Same setting as above, but 2-dimensional $\mathcal N(\begin{bmatrix} 0\\0 \end{bmatrix}, \mathrm{diag}(2))$ version.
+</p>
+
+
+<hr>
+<p>Reference(s):</p>
+<p>[1] <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Nonparametric_statistics">Nonparametric statistics</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kernel_(statistics)">Kernel</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hyperparameter_optimization">Hyperparameter optimization</a>, Wikipedia.<br>[2] <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1807.01774">BOHB: Robust and Efficient Hyperparameter Optimization at Scale</a>, Falkner et al. 2018.<br>[3] <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf">Algorithms for Hyper-Parameter Optimization</a>, Bergstra et al. 2011.<br>[4] <a target="_blank" rel="noopener" href="http://csyue.nccu.edu.tw/ch/Kernel%20Estimation(Ref).pdf">Kernel density estimation slides</a>, NCCU.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Posts</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MultiKDE-jl"><span class="toc-number">1.</span> <span class="toc-text">MultiKDE.jl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernel-Density-Estimation"><span class="toc-number">2.</span> <span class="toc-text">Kernel Density Estimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementation"><span class="toc-number">3.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DEMOs-Code"><span class="toc-number">4.</span> <span class="toc-text">DEMOs [Code]</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&text=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&is_video=false&description=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator&body=Check out this article: https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&title=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&name=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://noilreed.github.io/2021/06/22/2021-06-22-MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator/&t=MultiKDE.jl: A Lazy Evaluation Multivariate Kernel Density Estimator"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    Ping
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Posts</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
