@@ -19,7 +19,7 @@ rsync -av --exclude '.git' --exclude 'deploy.sh' _site/ .
 
 # 6. 提交
 git add .
-git commit -m "Deploy time: $(date +%F-%T)"
+git commit -m "Site updated: $(date +%F-%T)"
 
 # 7. 强制推送到远程 gh-pages 分支
 git push origin gh-pages --force
