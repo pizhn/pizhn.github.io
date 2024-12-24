@@ -106,11 +106,10 @@ ul.link li {
   align-items: center;
   margin-bottom: 10px; /* Adjust spacing between items */
 
-
-  border-bottom: 1px solid #2c2c2c;
+  border-bottom: 0.8px solid #2c2c2c;
   // border-left: 0.8px solid #2c2c2c;
-  // border-right: 1px solid #2c2c2c;
-  border-radius: 2px;
+  border-right: 1px solid #2c2c2c;
+  border-radius: 3px;
 }
 
 ul.link li a {
