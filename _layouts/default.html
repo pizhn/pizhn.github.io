@@ -41,9 +41,9 @@
           {% endif %}
 
           {% if site.blank_title %}
-            <h3>{{ site.title | default: site.github.repository_name }}</h1>
+            <h2>{{ site.title | default: site.github.repository_name }}</h2>
           {% else %}
-            <h3><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+            <h2>{{ site.title | default: site.github.repository_name }}</h2>
           {% endif %}
 
           {% if site.email %}
