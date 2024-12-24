@@ -1,9 +1,9 @@
 <div class="sidebar">
 
   <style scoped>
-    ul.link a {
-      color: var(--clr-h1-and-bold);
-      text-decoration: none;
+
+    header {
+      text-align: center;
     }
 
     ul.link a:hover, ul.link a:focus {
@@ -11,19 +11,29 @@
     }
 
     ul.link li {
+      position: relative;
       text-align: center;
     }
 
-    nav li{
-      /* border-bottom: 1px solid var(--clr-code-text); */
-      border-right: 1px solid var(--clr-code-text);
-      border-radius: 5px;
+    ul.link li a {
+      display: block;
+      color: var(--clr-h1-and-bold);
+      text-decoration: none;
+    }
+
+    ul.link li:hover{
+      background-color: var(--clr-code-bg);
+    }
+
+    /* nav li, ul.link li { */
+    nav li {
+      /* border-left: 0.9px solid var(--clr-code-text); */
+      /* border-right: 1.2px solid var(--clr-code-text); */
+      border-bottom: 1.0px solid var(--clr-code-text);
+      border-radius: 2px;
       margin: 5px;
     }
 
-    nav li:hover{
-      background-color: var(--clr-code-bg);
-    }
   </style>
 
   <header>
@@ -31,8 +41,12 @@
     <nav>
       <div class="link-wrapper">
         <ul class="link">
-          <a href="{{ "/" | absolute_url }}"><li>Home</li></a>
-          <a href="{{ "/post/" | absolute_url }}"><li>Post</li></a>
+          <li>
+            <a href="{{ "/" | absolute_url }}">Home</a>
+          </li>
+          <li>
+            <a href="{{ "/post/" | absolute_url }}">Post</a>
+          </li>
         </ul>
       </div>  
     </nav>
