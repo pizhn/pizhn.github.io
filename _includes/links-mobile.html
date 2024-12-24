@@ -9,6 +9,16 @@
         color: var(--clr-a-text-hvr);
         }
     </style>
+
+    <nav>
+    <div class="link-wrapper-mobile">
+        <ul class="link">
+        <li><a href="{{ "/" | absolute_url }}">Home</a></li>
+        <li><a href="{{ "/post/" | absolute_url }}">Post</a></li>
+        </ul>
+    </div>
+    </nav>
+    
     {%- for platform in site.sidebar %}
     <nobr><a href="{{ platform.link }}" rel="me">{{ platform.icon }}&nbsp;{{ platform.name }}</a>
     {%- unless forloop.last %}<span style="margin-left: 6px;"></span>{% endunless %}</nobr>

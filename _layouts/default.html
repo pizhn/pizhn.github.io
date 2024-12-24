@@ -26,42 +26,8 @@
 
     <div class="wrapper">
       
-      <div class="sidebar">
-
-        <nav>
-          <ul>
-            <li><a href="{{ "/" | absolute_url }}">Home</a></li>
-            <li><a href="{{ "/post/" | absolute_url }}">Post</a></li>
-          </ul>
-        </nav>
-
-        <header>
-          {% if site.logo %}
-            <img class="img-circle" src="{{site.logo | relative_url}}" alt="Logo">
-          {% endif %}
-
-          {% if site.blank_title %}
-            <h2>{{ site.title | default: site.github.repository_name }}</h2>
-          {% else %}
-            <h2>{{ site.title | default: site.github.repository_name }}</h2>
-          {% endif %}
-
-          {% if site.email %}
-            <p class="addr"><i class="fa-regular fa-envelope"></i>&nbsp;{{ site.email }}</p>
-          {% endif %}
-
-          <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-          {% include sidebar.html %}
-
-        </header>
-
-        {% include links-mobile.html %}
-
-        <div class="sidebar-footer">
-          {%- include footer.html -%}
-        </div>
-      </div>
+      
+      {% include sidebar.html %}
       
       <section>
 

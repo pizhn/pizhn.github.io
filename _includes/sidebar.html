@@ -1,4 +1,5 @@
-<div class="link-wrapper">
+<div class="sidebar">
+
   <style scoped>
     ul.link a {
       color: var(--clr-h1-and-bold);
@@ -8,15 +9,68 @@
     ul.link a:hover, ul.link a:focus {
       color: var(--clr-a-text-hvr);
     }
+
+    ul.link li {
+      text-align: center;
+    }
+
+    nav li{
+      /* border-bottom: 1px solid var(--clr-code-text); */
+      border-right: 1px solid var(--clr-code-text);
+      border-radius: 5px;
+      margin: 5px;
+    }
+
+    nav li:hover{
+      background-color: var(--clr-code-bg);
+    }
   </style>
-  <ul class="link">
-    {%- for platform in site.sidebar %}
-      <li>
-        <a href="{{ platform.link }}">
-          <span class="icon">{{ platform.icon }}</span>
-          <span class="text">{{ platform.name }}</span>
-        </a>
-      </li>
-    {%- endfor %}
-  </ul>
+
+  <header>
+
+    <nav>
+      <div class="link-wrapper">
+        <ul class="link">
+          <a href="{{ "/" | absolute_url }}"><li>Home</li></a>
+          <a href="{{ "/post/" | absolute_url }}"><li>Post</li></a>
+        </ul>
+      </div>  
+    </nav>
+    
+    {% if site.logo %}
+      <img class="img-circle" src="{{site.logo | relative_url}}" alt="Logo">
+    {% endif %}
+
+    {% if site.blank_title %}
+      <h2>{{ site.title | default: site.github.repository_name }}</h2>
+    {% else %}
+      <h2>{{ site.title | default: site.github.repository_name }}</h2>
+    {% endif %}
+
+    {% if site.email %}
+      <p class="addr"><i class="fa-regular fa-envelope"></i>&nbsp;{{ site.email }}</p>
+    {% endif %}
+
+    <p>{{ site.description | default: site.github.project_tagline }}</p>
+
+    <div class="link-wrapper">
+      <ul class="link">
+        {%- for platform in site.sidebar %}
+          <li>
+            <a href="{{ platform.link }}">
+              <span class="icon">{{ platform.icon }}</span>
+              <span class="text">{{ platform.name }}</span>
+            </a>
+          </li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+  </header>
+
+  {% include links-mobile.html %}
+
+  <div class="sidebar-footer">
+    {%- include footer.html -%}
+  </div>
 </div>
