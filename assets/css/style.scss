@@ -55,7 +55,8 @@
   padding-right: 20px;
   max-height: 30%;
   overflow: auto;
-  font: 15px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // font: 15px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // font: 15px/1.5 "Times New Roman","Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @media screen and (max-width: 700px){
@@ -65,4 +66,8 @@
   .popup{
     width: 70%;
   }
+}
+
+.addr {
+  margin-bottom: 15px;
 }

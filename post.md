@@ -4,7 +4,7 @@ title: Post
 permalink: /post/
 ---
 
-<h2>Posts</h2>
+<h2>Post</h2>
 
 {% assign postsByYearMonth = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" %}
 

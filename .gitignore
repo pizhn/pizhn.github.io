@@ -6,3 +6,4 @@ vendor
 Gemfile.lock
 *.gem
 .jekyll-cache
+_DS_Store

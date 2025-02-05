@@ -2,78 +2,126 @@
 layout: default
 ---
 
-## About Me
-
-I'm a second-year Ph.D. student in the Department of Computer Science at [The Ohio State University](https://www.osu.edu/). 
-My advisor is [Prof. Wei-Lun (Harry) Chao](https://sites.google.com/view/wei-lun-harry-chao). 
-My research interests lie in developing modern machine learning algorithms robust to distribution shifts.
-
-
-## Publications
-
-<div>
-  <div class="img-container">
-    <img src="/assets/img/pub/peft-main.jpg" alt="PEFT Main">
-    <img src="/assets/img/pub/peft-merge.jpg" alt="PEFT Merge">
-  </div>
-  <div>
-    <p>
-      Z. Mai, P. Zhang, C.-H. Tu, H.-Y. Chen, L. Zhang, W.-L. Chao, <cite>Lessons Learned from a Unifying Empirical Study of Parameter-Efficient Fine-Tuning (PEFT) in Visual Recognition</cite>, <cite>arXiv</cite>
+<section class="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="section-content">
+    <p>I'm a second-year Ph.D. student in the Department of Computer Science at 
+      <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>. 
+      My advisor is 
+      <a href="https://sites.google.com/view/wei-lun-harry-chao" target="_blank">Prof. Wei-Lun (Harry) Chao</a>. 
+      My research interests lie in developing modern machine learning algorithms robust to distribution shifts.
     </p>
   </div>
-</div>
+</section>
 
-<hr/>
+<section class="publications">
+  <h2 class="section-title">Publications</h2>
 
-<div>
-  <div class="img-container">
-    <img src="/assets/img/pub/ft-main.jpg" alt="Fine-tuning Main">
-    <img src="/assets/img/pub/ft-calib.jpg" alt="Fine-tuning Calibration">
-  </div>
-  <div>
-    <p>
-      Z. Mai*, A. Chowdhury*, P. Zhang*, C.-H. Tu, H.-Y. Chen, V. Pahuja, 
-      T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao, <cite>Fine-Tuning is Fine, if Calibrated</cite>, <cite>NeurIPS 2024</cite>
-    </p>
-  </div>
-</div>
+  <small class="contribution-note">* Equal contribution</small>
 
-<hr/>
+  <article class="publication-card">
+    <div class="img-grid">
+      <img src="/assets/img/pub/peft-main.jpg" alt="PEFT Main">
+      <img src="/assets/img/pub/peft-merge.jpg" alt="PEFT Merge">
+    </div>
+    <div class="publication-info">
+      <p>Z. Mai, <strong>P. Zhang</strong>, C.-H. Tu, H.-Y. Chen, L. Zhang, W.-L. Chao, 
+      <cite>Lessons Learned from a Unifying Empirical Study of Parameter-Efficient Fine-Tuning (PEFT) in Visual Recognition</cite>, <br/>
+      <cite>arXiv</cite></p>
+    </div>
+  </article>
 
-<div>
-  <div class="img-container">
-    <img src="/assets/img/pub/tpp-33.jpg" alt="Phase 1">
-    <img src="/assets/img/pub/tpp-66.jpg" alt="Phase 2">
-    <img src="/assets/img/pub/tpp-100.jpg" alt="Phase 3">
-  </div>
-  <div>
-    <p>
-      P. Zhang, R. Iyer, A. Tendulkar, G. Aggarwal, A. De, <cite>Learning to Select Exogenous Events for Marked Temporal Point Processes</cite>, <cite>NeurIPS 2021</cite>
-    </p>
-  </div>
-</div>
+  <article class="publication-card">
+    <div class="img-grid">
+      <img src="/assets/img/pub/ft-main.jpg" alt="Fine-tuning Main">
+      <img src="/assets/img/pub/ft-calib.jpg" alt="Fine-tuning Calibration">
+    </div>
+    <div class="publication-info">
+      <p>Z. Mai*, A. Chowdhury*, <strong>P. Zhang*</strong>, C.-H. Tu, H.-Y. Chen, V. Pahuja, 
+      T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao, 
+      <cite>Fine-Tuning is Fine, if Calibrated</cite>, <br/>
+      <cite>NeurIPS 2024</cite></p>
+    </div>
+  </article>
 
-<small>* Equal contribution</small>
+  <article class="publication-card">
+    <div class="img-grid three-column">
+      <img src="/assets/img/pub/tpp-33.jpg" alt="Phase 1">
+      <img src="/assets/img/pub/tpp-66.jpg" alt="Phase 2">
+      <img src="/assets/img/pub/tpp-100.jpg" alt="Phase 3">
+    </div>
+    <div class="publication-info">
+      <p><strong>P. Zhang</strong>, R. Iyer, A. Tendulkar, G. Aggarwal, A. De, 
+      <cite>Learning to Select Exogenous Events for Marked Temporal Point Processes</cite>, <br/>
+      <cite>NeurIPS 2021</cite></p>
+    </div>
+  </article>
+</section>
 
 <style>
-    .img-container {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: 1fr;
-        grid-auto-rows: 90px;
-        width: 100%;
-        overflow: hidden;
-        place-items: center;
-    }
+  .about {
+    padding-bottom: 0;
+  }
 
-    .img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
+  .section-title {
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+    margin: 2rem 0 1.5rem;
+  }
 
-    hr {
-        border: none;
-        width: 50%;
+  .publication-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: transform 0.2s;
+  }
+
+  .publication-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .img-grid {
+    display: grid;
+    /* gap: 1rem; */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* margin: 1rem 0; */
+
+    /* border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  }
+
+  .img-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    /* border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  }
+
+  .three-column {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .publication-info {
+    /* padding: 1rem 0; */
+    line-height: 1.6;
+  }
+
+  .contribution-note {
+    display: block;
+    margin-top: 1rem;
+    color: #666;
+  }
+
+  @media (max-width: 768px) {
+    .img-grid {
+      grid-template-columns: 1fr;
     }
+    
+    .three-column {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
