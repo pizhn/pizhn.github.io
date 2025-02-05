@@ -54,3 +54,26 @@ My research interests lie in developing modern machine learning algorithms robus
 </div>
 
 <small>* Equal contribution</small>
+
+<style>
+    .img-container {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 90px;
+        width: 100%;
+        overflow: hidden;
+        place-items: center;
+    }
+
+    .img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    hr {
+        border: none;
+        width: 50%;
+    }
+</style>
