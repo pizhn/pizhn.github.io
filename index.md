@@ -8,7 +8,7 @@ I'm a second-year Ph.D. student in the Department of Computer Science at [The Oh
 My advisor is [Prof. Wei-Lun (Harry) Chao](https://sites.google.com/view/wei-lun-harry-chao). 
 My research interests lie in developing modern machine learning algorithms robust to distribution shifts.
 
-
+<!-- 
 ## Publications
 
 <div>
@@ -53,4 +53,4 @@ My research interests lie in developing modern machine learning algorithms robus
   </div>
 </div>
 
-<small>* Equal contribution</small>
+<small>* Equal contribution</small> -->
