@@ -55,8 +55,6 @@
   padding-right: 20px;
   max-height: 30%;
   overflow: auto;
-  // font: 15px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  // font: 15px/1.5 "Times New Roman","Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @media screen and (max-width: 700px){
@@ -70,4 +68,13 @@
 
 .addr {
   margin-bottom: 15px;
+}
+
+
+body {
+  background-color: var(--clr-bg);
+  padding:50px;
+  font: 16px/1.6 "Times New Roman", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--clr-text);
+  font-weight:400;
 }

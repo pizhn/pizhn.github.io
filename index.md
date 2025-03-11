@@ -5,11 +5,7 @@ layout: default
 <section class="about">
   <h2 class="section-title">About Me</h2>
   <div class="section-content">
-    <p>I'm a second-year Ph.D. student in the Department of Computer Science at 
-      <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>. 
-      My advisor is 
-      <a href="https://sites.google.com/view/wei-lun-harry-chao" target="_blank">Prof. Wei-Lun (Harry) Chao</a>. 
-      My research interests lie in developing modern machine learning algorithms robust to distribution shifts.
+    <p>I'm a second-year Ph.D. student in the Department of Computer Science at <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>. My advisor is <a href="https://sites.google.com/view/wei-lun-harry-chao" target="_blank">Prof. Wei-Lun (Harry) Chao</a>. My research interests lie in developing modern machine learning algorithms robust to distribution shifts.
     </p>
   </div>
 </section>
@@ -21,13 +17,24 @@ layout: default
 
   <article class="publication-card">
     <div class="img-grid">
+      <img src="/assets/img/pub/ssl.jpg" alt="SSL">
+    </div>
+    <div class="publication-info">
+      <p><strong>P. Zhang*</strong>, Z. Mai*, Q.-H. Nguyen, W.-L. Chao, 
+      <cite>Revisiting Semi-Supervised Learning in the Era of Foundation Models</cite>, <br/>
+      <cite>arXiv</cite></p>
+    </div>
+  </article>
+
+  <article class="publication-card">
+    <div class="img-grid">
       <img src="/assets/img/pub/peft-main.jpg" alt="PEFT Main">
       <img src="/assets/img/pub/peft-merge.jpg" alt="PEFT Merge">
     </div>
     <div class="publication-info">
       <p>Z. Mai, <strong>P. Zhang</strong>, C.-H. Tu, H.-Y. Chen, L. Zhang, W.-L. Chao, 
       <cite>Lessons Learned from a Unifying Empirical Study of Parameter-Efficient Fine-Tuning (PEFT) in Visual Recognition</cite>, <br/>
-      <cite>arXiv</cite></p>
+      <cite>CVPR 2025</cite></p>
     </div>
   </article>
 
@@ -37,8 +44,7 @@ layout: default
       <img src="/assets/img/pub/ft-calib.jpg" alt="Fine-tuning Calibration">
     </div>
     <div class="publication-info">
-      <p>Z. Mai*, A. Chowdhury*, <strong>P. Zhang*</strong>, C.-H. Tu, H.-Y. Chen, V. Pahuja, 
-      T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao, 
+      <p>Z. Mai*, A. Chowdhury*, <strong>P. Zhang*</strong>, C.-H. Tu, H.-Y. Chen, V. Pahuja, T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao, 
       <cite>Fine-Tuning is Fine, if Calibrated</cite>, <br/>
       <cite>NeurIPS 2024</cite></p>
     </div>
