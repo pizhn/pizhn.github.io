@@ -5,7 +5,7 @@ layout: default
 <section class="about">
   <h2 class="section-title">About Me</h2>
   <div class="section-content">
-    <p>I'm a second-year Ph.D. student in the Department of Computer Science at <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>. My advisor is <a href="https://sites.google.com/view/wei-lun-harry-chao" target="_blank">Prof. Wei-Lun (Harry) Chao</a>. My research interests lie in developing modern machine learning algorithms robust to distribution shifts.
+    <p>I'm a third-year Ph.D. student in the Department of Computer Science at <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>. My advisor is <a href="https://sites.google.com/view/wei-lun-harry-chao" target="_blank">Prof. Wei-Lun (Harry) Chao</a>. My research interests lie in developing modern machine learning algorithms robust to distribution and modality variations.
     </p>
   </div>
 </section>
@@ -22,7 +22,7 @@ layout: default
     <div class="publication-info">
       <p><strong>P. Zhang*</strong>, Z. Mai*, Q.-H. Nguyen, W.-L. Chao, 
       <cite>Revisiting Semi-Supervised Learning in the Era of Foundation Models</cite>, <br/>
-      <cite>arXiv</cite></p>
+      <cite><strong>NeurIPS 2025</strong></cite></p>
     </div>
   </article>
 
@@ -32,9 +32,9 @@ layout: default
       <img src="/assets/img/pub/peft-merge.jpg" alt="PEFT Merge">
     </div>
     <div class="publication-info">
-      <p>Z. Mai, <strong>P. Zhang</strong>, C.-H. Tu, H.-Y. Chen, L. Zhang, W.-L. Chao, 
+      <p>Z. Mai, <strong>P. Zhang</strong>, C.-H. Tu, H.-Y. Chen, Q.-H. Nguyen, L. Zhang, W.-L. Chao, 
       <cite>Lessons Learned from a Unifying Empirical Study of Parameter-Efficient Fine-Tuning (PEFT) in Visual Recognition</cite>, <br/>
-      <cite>CVPR 2025</cite></p>
+      <cite><strong>CVPR 2025 (Highlight)</strong></cite></p>
     </div>
   </article>
 
@@ -46,7 +46,7 @@ layout: default
     <div class="publication-info">
       <p>Z. Mai*, A. Chowdhury*, <strong>P. Zhang*</strong>, C.-H. Tu, H.-Y. Chen, V. Pahuja, T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao, 
       <cite>Fine-Tuning is Fine, if Calibrated</cite>, <br/>
-      <cite>NeurIPS 2024</cite></p>
+      <cite><strong>NeurIPS 2024</strong></cite></p>
     </div>
   </article>
 
@@ -59,7 +59,7 @@ layout: default
     <div class="publication-info">
       <p><strong>P. Zhang</strong>, R. Iyer, A. Tendulkar, G. Aggarwal, A. De, 
       <cite>Learning to Select Exogenous Events for Marked Temporal Point Processes</cite>, <br/>
-      <cite>NeurIPS 2021</cite></p>
+      <cite><strong>NeurIPS 2021</strong></cite></p>
     </div>
   </article>
 </section>
