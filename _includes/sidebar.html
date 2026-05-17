@@ -1,0 +1,40 @@
+<div class="sidebar">
+  <header class="site-sidebar">
+    {% if site.logo %}
+      <img class="img-circle" src="{{ site.logo | relative_url }}" alt="Logo">
+    {% endif %}
+
+    {% if site.blank_title %}
+      <h1 class="site-title"><a href="{{ "/" | relative_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+    {% else %}
+      <h1 class="site-title"><a href="{{ "/" | relative_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+    {% endif %}
+
+    {% if site.email %}
+      <p class="addr"><i class="fa-regular fa-envelope"></i>&nbsp;{{ site.email }}</p>
+    {% endif %}
+
+    {% if site.description %}
+      <p class="site-description">{{ site.description }}</p>
+    {% endif %}
+
+    <div class="link-wrapper sidebar-links">
+      <ul class="link">
+        {%- for platform in site.sidebar %}
+          <li>
+            <a href="{{ platform.link }}" rel="me">
+              <span class="icon">{{ platform.icon }}</span>
+              <span class="text">{{ platform.name }}</span>
+            </a>
+          </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </header>
+
+  {% include links-mobile.html %}
+
+  <div class="sidebar-footer">
+    {%- include footer.html -%}
+  </div>
+</div>

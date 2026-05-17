@@ -1,0 +1,46 @@
+name: Deploy Jekyll site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: Build site
+        run: JEKYLL_ENV=production bundle exec jekyll build
+
+      - name: Deploy to gh-pages as a single root commit
+        shell: bash
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          set -euo pipefail
+          find _site -name .DS_Store -delete
+          tmp_index="$(mktemp)"
+          GIT_INDEX_FILE="$tmp_index" git read-tree --empty
+          GIT_INDEX_FILE="$tmp_index" git --work-tree="$PWD/_site" add -A -- .
+          tree="$(GIT_INDEX_FILE="$tmp_index" git write-tree)"
+          rm -f "$tmp_index"
+          commit="$(git commit-tree "$tree" -m "Initial commit")"
+          git update-ref refs/heads/gh-pages "$commit"
+          git push --force origin gh-pages

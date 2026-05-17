@@ -1,0 +1,16 @@
+_site
+.sass-cache
+.jekyll-metadata
+.bundle
+vendor
+Gemfile.lock
+*.gem
+.jekyll-cache
+.DS_Store
+
+reset-history-push.sh
+
+_posts/_stale
+deploy.sh
+Rakefile
+script/

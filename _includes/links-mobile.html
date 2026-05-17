@@ -1,0 +1,7 @@
+<div class="link-wrapper-mobile" id="link-wrapper-mobile">
+  <div class="mobile-links">
+    {%- for platform in site.sidebar %}
+      <a href="{{ platform.link }}" rel="me">{{ platform.icon }}<span>{{ platform.name }}</span></a>
+    {%- endfor %}
+  </div>
+</div>
