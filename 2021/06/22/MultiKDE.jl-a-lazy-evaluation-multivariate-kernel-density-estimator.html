@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>MultiKDE.jl: A lazy evaluation multivariate kernel density estimator | Ping Zhang</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="MultiKDE.jl: A lazy evaluation multivariate kernel density estimator" />
+<meta name="author" content="Ping" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://pizhn.github.io/2021/06/22/MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator.html" />
+<meta property="og:url" content="https://pizhn.github.io/2021/06/22/MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator.html" />
+<meta property="og:site_name" content="Ping Zhang" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MultiKDE.jl: A lazy evaluation multivariate kernel density estimator" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ping"},"dateModified":"2021-06-22T00:00:00+00:00","datePublished":"2021-06-22T00:00:00+00:00","headline":"MultiKDE.jl: A lazy evaluation multivariate kernel density estimator","mainEntityOfPage":{"@type":"WebPage","@id":"https://pizhn.github.io/2021/06/22/MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://pizhn.github.io/assets/img/hachiware.jpg"},"name":"Ping"},"url":"https://pizhn.github.io/2021/06/22/MultiKDE.jl-a-lazy-evaluation-multivariate-kernel-density-estimator.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/colors-light.css?v=">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+
+    <link rel="preload" href="/assets/img/hachiware.jpg" as="image">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+
+<!-- Setup Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0438JKZVP5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-0438JKZVP5');
+    </script>
+
+
+
+<!-- You can set your favicon here -->
+
+
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+
+    <div class="wrapper">
+      
+      
+      <div class="sidebar">
+  <header class="site-sidebar">
+    
+      <img class="img-circle" src="/assets/img/hachiware.jpg" alt="Logo">
+    
+
+    
+      <h1 class="site-title"><a href="/">Ping Zhang</a></h1>
+    
+
+    
+      <p class="addr"><i class="fa-regular fa-envelope"></i>&nbsp;ping69852 [at] gmail</p>
+    
+
+    
+
+    <div class="link-wrapper sidebar-links">
+      <ul class="link">
+          <li>
+            <a href="https://scholar.google.com/citations?user=sGZNtw8AAAAJ&hl=en" rel="me">
+              <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" style="vertical-align:-0.125em;" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14a7 7 0 0 0 0-14z" fill="currentColor"/></svg></span>
+              <span class="text">Google Scholar</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/pizhn" rel="me">
+              <span class="icon"><i class="fa-brands fa-github"></i></span>
+              <span class="text">GitHub</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="link-wrapper-mobile" id="link-wrapper-mobile">
+  <div class="mobile-links">
+      <a href="https://scholar.google.com/citations?user=sGZNtw8AAAAJ&hl=en" rel="me"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" style="vertical-align:-0.125em;" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14a7 7 0 0 0 0-14z" fill="currentColor"/></svg><span>Google Scholar</span></a>
+      <a href="https://github.com/pizhn" rel="me"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+  </div>
+</div>
+
+
+  <div class="sidebar-footer"><p class="last-updated"><small>Last updated: May 17, 2026</small></p>
+</div>
+</div>
+
+      
+      <section>
+
+        <article class="home-section post-detail">
+  <p class="section-title post-date">22 June 2021</p>
+  <h1 class="post-title">MultiKDE.jl: A lazy evaluation multivariate kernel density estimator</h1>
+  <p class="post-author">by Ping</p>
+
+  <div class="post-body">
+    <hr />
+
+<h2 id="multikdejl-link">MultiKDE.jl <a href="https://github.com/noilreed/MultiKDE.jl">[link]</a></h2>
+<p>A lazily evaluated multivariate kernel density estimation library for Julia.</p>
+
+<hr />
+
+<h2 id="kernel-density-estimation">Kernel Density Estimation</h2>
+<p>Kernel density estimation, also known as KDE, is a classic algorithm in <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">nonparametric statistics</a>. The objective of KDE is to estimate a distribution from observations without assuming a closed-form distribution. A <a href="https://en.wikipedia.org/wiki/Kernel_(statistics)">kernel function</a> is required for KDE. It is essentially a probabilistic mass function, but in this setting it is used to estimate an unknown distribution. In most cases, it is desirable for a kernel function to have two properties:</p>
+<ol>
+  <li><strong>Normalization</strong>: \(\int_{-\infty}^{\infty} K(u) du = 1\), i.e., it integrates to one (this will be useful later).</li>
+  <li><strong>Symmetry</strong>: \(K(u) = K(-u)\), which means the influence of one point should be symmetric around the surrounding points.</li>
+</ol>
+
+<p>Suppose we have \(D=\{x_{1}, x_{2}, \ldots, x_{n}\}\), a set of observations of random variable \(X\). We want to estimate the probability distribution of \(X\) using kernel function \(K\). Then, with KDE, the probability mass at point \(x\) is estimated as \(\widehat{P}(X=x)=\frac{1}{nh}\Sigma_{i}^{n} K(\frac{x-x_{i}}{h})\), where \(h\) is a hyperparameter called the <em>bandwidth</em> that controls how \(D\) influences \(\widehat{P}\). The term \(\frac{1}{nh}\) is a normalization factor that ensures \(\int_{-\infty}^{\infty} \widehat{P}(X=u)du = \int_{-\infty}^{\infty} K(u)du\). It is then easy to see that when \(K\) is normalized, \(\widehat{P}\) is normalized as well.</p>
+
+<hr />
+<h2 id="implementation">Implementation</h2>
+<p>Although there are several nice KDE implementations in Julia, such as <a href="https://github.com/JuliaStats/KernelDensity.jl.git">KernelDensity.jl</a> and <a href="https://github.com/JuliaRobotics/KernelDensityEstimate.jl">KernelDensityEstimate.jl</a>, I felt it was still necessary to have another implementation when I tried to implement <a href="https://arxiv.org/abs/1807.01774">BOHB</a>. Although these libraries are remarkable, they do not support several features I needed very well:</p>
+
+<ol>
+  <li><strong>Lazy Evaluation</strong>: We do not want to evaluate the whole density when initializing it. Instead, we just keep the data without any calculation, and evaluate \(\widehat{P}(X=\hat{x})\) at a specific \(\hat{x}\) only when we need it. This is because in BOHB, the observations can change frequently as the algorithm evolves. A full evaluation would be unnecessary and wasteful.</li>
+  <li><strong>Multidimension</strong>: BOHB is a <a href="https://en.wikipedia.org/wiki/Hyperparameter_optimization">hyperparameter optimization</a> algorithm that uses the <a href="https://papers.nips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf">Tree Parzen Estimator</a>. When sampling hyperparameters, it splits the previously evaluated hyperparameters into two halves with respect to their performance. We then fit two KDEs over them: KDE-good, which uses the better-performing half, and KDE-bad, which uses the worse-performing half. Note that all observations are combinations of hyperparameters, so we need to treat the KDE as a multi-dimensional function. Here we use the <a href="http://csyue.nccu.edu.tw/ch/Kernel%20Estimation(Ref).pdf">product kernel</a>, following the implementation in <a href="https://github.com/statsmodels/statsmodels">statsmodels</a>. The original BOHB paper mentions using this library.</li>
+  <li><strong>Ordered and Unordered Categorical Random Variable</strong>: For hyperparameter optimization, the input space can sometimes be categorical (such as the number of threads to use or the number of layers in a model) or unordered categorical (such as the choice of optimization method). We need to support KDE for these kinds of variables. Specifically, statsmodels uses two kernel functions specialized for them, named after the authors: <a href="https://academic.oup.com/biomet/article-abstract/68/1/301/237752?redirectedFrom=fulltext">Wang-Ryzin</a> and <a href="https://academic.oup.com/biomet/article-abstract/63/3/413/270829?redirectedFrom=fulltext">Aitchison-Aitken</a>.</li>
+</ol>
+
+<hr />
+
+<h2 id="demo-code">DEMO <a href="https://github.com/noilreed/notebook/blob/main/MultiKDE_demo/demo.ipynb">[Code]</a></h2>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim1.svg" alt="Demo 1 KDE visualization" />
+  <br />
+  Demo 1: KDE visualization over 50 random observations from \( \mathcal{N}(0, 1) \) using a <a href="http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/diffusion.gaussian.kernel.pdf.pdf">gaussian kernel</a>, with different bandwidths. A smaller \(h\) makes the curve more fluctuating and more sensitive to observations, and vice versa.
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/noilreed/notebook/842a60e81bad431dd70c6e04eb93f82ff10c1cda/MultiKDE_demo/dim2.svg" alt="Demo 2 KDE visualization" />
+  <br />
+  Demo 2: Same setting as above, but 2-dimensional version with \( \mathcal N(\begin{bmatrix} 0\\0 \end{bmatrix}, \mathrm{diag}(2)) \).
+</p>
+
+<hr />
+<p class="references-title"><em>References:</em></p>
+
+<ol class="references-list">
+  <li><a href="https://en.wikipedia.org/wiki/Nonparametric_statistics"><em>Nonparametric statistics</em></a>, <a href="https://en.wikipedia.org/wiki/Kernel_(statistics)"><em>Kernel</em></a>, <a href="https://en.wikipedia.org/wiki/Hyperparameter_optimization"><em>Hyperparameter optimization</em></a>, Wikipedia.</li>
+  <li><a href="https://arxiv.org/abs/1807.01774"><em>BOHB: Robust and efficient hyperparameter optimization at scale</em></a>, Falkner et al. 2018.</li>
+  <li><a href="https://papers.nips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf"><em>Algorithms for hyper-parameter optimization</em></a>, Bergstra et al. 2011.</li>
+  <li><a href="http://csyue.nccu.edu.tw/ch/Kernel%20Estimation(Ref).pdf"><em>Kernel density estimation slides</em></a>, NCCU.</li>
+</ol>
+
+  </div>
+
+  
+</article>
+
+
+      </section>
+      <footer><p class="last-updated"><small>Last updated: May 17, 2026</small></p>
+</footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+  </body>
+</html>
