@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <header class="site-sidebar">
+    <img class="profile-image" src="{{ site.logo | relative_url }}" alt="{{ site.title | escape }}">
+
+    <h1 class="site-title">{{ site.title | escape }}</h1>
+
+    <p class="site-email"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>&nbsp;{{ site.email | escape }}</p>
+
+    <nav class="sidebar-links" aria-label="Profile links">
+      <ul>
+        {%- for link in site.links %}
+          <li>
+            <a href="{{ link.url | escape }}" rel="me">
+              <span class="icon">{{ link.icon }}</span>
+              <span class="text">{{ link.label | escape }}</span>
+            </a>
+          </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </header>
+
+  <div class="sidebar-footer">
+    {%- include footer.html -%}
+  </div>
+</div>
