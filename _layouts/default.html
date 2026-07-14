@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+
+    <link rel="preload" href="{{ site.logo | relative_url }}" as="image">
+    {% include head.html %}
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include sidebar.html %}
+      <main class="site-content">
+        {{ content }}
+      </main>
+      <footer class="mobile-footer">
+        {%- include footer.html -%}
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+title: Ping Zhang
+author: Ping Zhang
+last_updated: "2026-10-26"
+publication_author: P. Zhang
+logo: /assets/img/hachiware.jpg
+email: ping69852 [at] gmail
+google_analytics: G-0438JKZVP5
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+links:
+  - label: Google Scholar
+    icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14a7 7 0 0 0 0-14z" fill="currentColor"/></svg>
+    url: https://scholar.google.com/citations?user=sGZNtw8AAAAJ&hl=en
+  - label: GitHub
+    icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.2 4.9 18.2 5.2 18.2 5.2c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>
+    url: https://github.com/pizhn
+
+publications:
+  - title: Representing short-term movement to reveal animal identity and learning progress
+    equal_contribution: 3
+    url: https://arxiv.org/abs/2610.27140
+    authors: [P. Zhang, Q.-H. Nguyen, Y. Lei, S. Shridhar, Z. Leveroni, E. Quattrocchi, J. Y. Yu, W.-L. Chao]
+    venue: arXiv
+    category: preprint
+    year: 2026
+
+  - title: Ontic state recovery through prediction
+    url: https://arxiv.org/abs/2610.27139
+    authors: [P. Zhang, Q.-H. Nguyen, Y. Lei, W.-L. Chao]
+    venue: arXiv
+    category: preprint
+    year: 2026
+
+  - title: "Speculative decoding for multimodal models: A survey"
+    equal_contribution: 2
+    url: https://doi.org/10.20944/preprints202603.2344.v1
+    authors: [Y. Zhang, Y. Wang, Y. Hsieh, X. Wang, P. Zhang, Z. Yang, J. Ma, Z. Zhao, B. Zheng, H. T. U. Chan, J. Li, X. Liu, K. Gao, R. Liu, J. Zhang, J. Li, Z. Wan, Z. Zhang, J. Xiong, S. Zhu, H. Cao, H. Shen]
+    venue: Preprints.org
+    category: survey
+    year: 2026
+
+  - title: "MathGen: Revealing the illusion of mathematical competence through text-to-image generation"
+    equal_contribution: 3
+    url: https://arxiv.org/abs/2603.27959
+    authors: [R. Liu, H. Shen, P. Zhang, Y. Hsieh, Y. Zhang, J. Xu, Q. Han, J. Li, J. Lu, J. Ma, J. Mo, S. Chen, Z. Zhang, Z. Wan, J. Xiong, X. Wang, Z. Liu, H. Cao, N. Wong]
+    venue: arXiv
+    category: preprint
+    year: 2026
+
+  - title: Lessons and open questions from a unified study of camera-trap species recognition over time
+    equal_contribution: 3
+    url: https://link.springer.com/chapter/10.1007/978-3-032-37359-5_33
+    authors: [S. Jeon, H. Tian, L. Wang, Z. Mai, V. Bakshi, J. Hou, P. Zhang, A. Chowdhury, J. Gu, W.-L. Chao]
+    venue: ECCV
+    category: conference
+    year: 2026
+
+  - title: "MMSpec: Benchmarking speculative decoding for vision-language models"
+    equal_contribution: 3
+    url: https://arxiv.org/abs/2603.14989
+    authors: [H. Shen, X. Wang, P. Zhang, Y. Hsieh, Q. Han, Z. Wan, Z. Zhang, J. Zhang, J. Xiong, Z. Liu, Y. Zhang, H. Cao, C. Zhao, M. Zhang]
+    venue: arXiv
+    category: preprint
+    year: 2026
+
+  - title: Revisiting semi-supervised learning in the era of foundation models
+    equal_contribution: 2
+    url: https://arxiv.org/abs/2503.09707
+    authors: [P. Zhang, Z. Mai, Q.-H. Nguyen, W.-L. Chao]
+    venue: NeurIPS
+    category: conference
+    year: 2025
+
+  - title: Lessons and insights from a unifying study of parameter-efficient fine-tuning (PEFT) in visual recognition
+    url: https://openaccess.thecvf.com/content/CVPR2025/html/Mai_Lessons_and_Insights_from_a_Unifying_Study_of_Parameter-Efficient_Fine-Tuning_CVPR_2025_paper.html
+    authors: [Z. Mai, P. Zhang, C.-H. Tu, H.-Y. Chen, Q.-H. Nguyen, L. Zhang, W.-L. Chao]
+    venue: CVPR
+    category: conference
+    year: 2025
+
+  - title: Fine-tuning is fine, if calibrated
+    equal_contribution: 3
+    url: https://arxiv.org/abs/2409.16223
+    authors: [Z. Mai, A. Chowdhury, P. Zhang, C.-H. Tu, H.-Y. Chen, V. Pahuja, T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao]
+    venue: NeurIPS
+    category: conference
+    year: 2024
+
+  - title: Learning to select exogenous events for marked temporal point process
+    url: https://proceedings.neurips.cc/paper/2021/hash/032abcd424b4312e7087f434ef1c0094-Abstract.html
+    authors: [P. Zhang, R. Iyer, A. Tendulkar, G. Aggarwal, A. De]
+    venue: NeurIPS
+    category: conference
+    year: 2021
+
+  - title: A summary and empirical analysis of coresets and data selection approaches for compute-efficient training and social network
+    url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sGZNtw8AAAAJ&citation_for_view=sGZNtw8AAAAJ:UebtZRa9Y70C
+    authors: [P. Zhang]
+    venue: The University of Texas at Dallas
+    category: thesis
+    year: 2022
+
+publication_groups:
+  - key: conference
+    title: Conference
+  - key: journal
+    title: Journal
+  - key: preprint
+    title: Preprint
+  - key: survey
+    title: Survey
+  - key: thesis
+    title: Thesis
+
+url: https://pizhn.github.io
+baseurl: ""
+repository: pizhn/pizhn.github.io
+
+exclude:
+  - .bundle
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+timezone: America/New_York
