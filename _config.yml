@@ -1,0 +1,54 @@
+title: Ping Zhang
+author: Ping
+publication_author: P. Zhang
+logo: /assets/img/hachiware.jpg
+email: ping69852 [at] gmail
+google_analytics: G-0438JKZVP5
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+links:
+  - label: Google Scholar
+    icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14a7 7 0 0 0 0-14z" fill="currentColor"/></svg>
+    url: https://scholar.google.com/citations?user=sGZNtw8AAAAJ&hl=en
+  - label: GitHub
+    icon: <i class="fa-brands fa-github"></i>
+    url: https://github.com/pizhn
+
+publications:
+  - title: Revisiting semi-supervised learning in the era of foundation models
+    url: https://arxiv.org/abs/2503.09707
+    authors: [P. Zhang, Z. Mai, Q.-H. Nguyen, W.-L. Chao]
+    venue: NeurIPS
+    year: 2025
+
+  - title: Lessons learned from a unifying empirical study of parameter-efficient fine-tuning (PEFT) in visual recognition
+    url: https://arxiv.org/abs/2409.16434
+    authors: [Z. Mai, P. Zhang, C.-H. Tu, H.-Y. Chen, Q.-H. Nguyen, L. Zhang, W.-L. Chao]
+    venue: CVPR
+    year: 2025
+
+  - title: Fine-tuning is fine, if calibrated
+    url: https://arxiv.org/abs/2409.16223
+    authors: [Z. Mai, A. Chowdhury, P. Zhang, C.-H. Tu, H.-Y. Chen, V. Pahuja, T. Berger-Wolf, S. Gao, C. Stewart, Y. Su, W.-L. Chao]
+    venue: NeurIPS
+    year: 2024
+
+  - title: Learning to select exogenous events for marked temporal point processes
+    url: https://proceedings.neurips.cc/paper/2021/hash/032abcd424b4312e7087f434ef1c0094-Abstract.html
+    authors: [P. Zhang, R. Iyer, A. Tendulkar, G. Aggarwal, A. De]
+    venue: NeurIPS
+    year: 2021
+
+url: https://pizhn.github.io
+baseurl: ""
+repository: pizhn/pizhn.github.io
+
+exclude:
+  - .bundle
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+timezone: America/Los_Angeles

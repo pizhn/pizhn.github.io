@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <header class="site-sidebar">
+    <img class="profile-image" src="{{ site.logo | relative_url }}" alt="{{ site.title | escape }}">
+
+    <h1 class="site-title">{{ site.title | escape }}</h1>
+
+    <p class="site-email"><i class="fa-regular fa-envelope"></i>&nbsp;{{ site.email | escape }}</p>
+
+    <nav class="sidebar-links" aria-label="Profile links">
+      <ul>
+        {%- for link in site.links %}
+          <li>
+            <a href="{{ link.url | escape }}" rel="me">
+              <span class="icon">{{ link.icon }}</span>
+              <span class="text">{{ link.label | escape }}</span>
+            </a>
+          </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </header>
+
+  <div class="sidebar-footer">
+    {%- include footer.html -%}
+  </div>
+</div>
